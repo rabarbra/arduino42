@@ -33,7 +33,7 @@ To complete this project, you will need the following components:
 
 ### Circuit Diagram
 
-![Circuit picture](ex00.png)
+![Circuit picture](ex00/ex00.png)
 
 
 ## Contributing
