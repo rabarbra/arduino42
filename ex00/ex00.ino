@@ -20,8 +20,8 @@ void setup()
 
 int	checkTime(int delay)
 {
-  	unsigned long	currTime;
-  
+    unsigned long	currTime;
+
     currTime = millis();
     if (currTime - prevTime >= delay)
     {
