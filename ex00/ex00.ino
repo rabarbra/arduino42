@@ -1,6 +1,7 @@
 const int       buttonPin = 7;
-const int       greenLedPin = 12;
-const int       redLedPin = 13;
+const int       greenLedPin = 13;
+const int       redLedPin = 11;
+const int       orangeLedPin = 10;
 
 int             buttonCounter = 0;
 int             buttonState = LOW;
@@ -8,24 +9,27 @@ int             prevButtonState = LOW;
 
 int             redLedState = LOW;
 int             greenLedState = LOW;
+int             orangeLedState = LOW;
 
-unsigned long   prevTime = 0;
+unsigned long   prevTime1 = 0;
+unsigned long   prevTime2 = 0;
 
 void setup()
 {
+    pinMode(orangeLedPin, OUTPUT);
     pinMode(greenLedPin, OUTPUT);
     pinMode(redLedPin, OUTPUT);
     pinMode(buttonPin, INPUT);
 }
 
-int	checkTime(int delay)
+int	checkTime(int delay, unsigned long *prev)
 {
     unsigned long	currTime;
 
     currTime = millis();
-    if (currTime - prevTime >= delay)
+    if (currTime - *prev >= delay)
     {
-        prevTime = currTime;
+        *prev = currTime;
         return (1);
     }
     return (0);
@@ -43,13 +47,21 @@ void loop()
             greenLedState = LOW;
             digitalWrite(greenLedPin, LOW);
         }
-        if (checkTime(1000))
+        if (checkTime(1000, &prevTime1))
         {
             if (redLedState == LOW)
                 redLedState = HIGH;
             else
                 redLedState = LOW;
             digitalWrite(redLedPin, redLedState);
+        }
+         if (checkTime(1000, &prevTime2))
+        {
+            if (orangeLedState == LOW)
+                orangeLedState = HIGH;
+            else
+                orangeLedState = LOW;
+            digitalWrite(orangeLedPin, orangeLedState);
         }
     }
     else
@@ -59,6 +71,11 @@ void loop()
             redLedState = LOW;
             digitalWrite(redLedPin, LOW);
         }
+		if (orangeLedState == HIGH)
+		{
+			orangeLedState = LOW;
+			digitalWrite(orangeLedPin, LOW);
+		}
         if (greenLedState == LOW)
         {
             greenLedState = HIGH;
