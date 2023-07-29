@@ -1,7 +1,7 @@
 const int       buttonPin = 7;
 const int       greenLedPin = 13;
-const int       redLedPin = 8;
-const int       orangeLedPin = 12;
+const int       redLedPin = 11;
+const int       orangeLedPin = 10;
 
 int             buttonCounter = 0;
 int             buttonState = LOW;
@@ -16,6 +16,7 @@ unsigned long   prevTime2 = 0;
 
 void setup()
 {
+    pinMode(orangeLedPin, OUTPUT);
     pinMode(greenLedPin, OUTPUT);
     pinMode(redLedPin, OUTPUT);
     pinMode(buttonPin, INPUT);
@@ -46,21 +47,14 @@ void loop()
             greenLedState = LOW;
             digitalWrite(greenLedPin, LOW);
         }
-        if (checkTime(500, &prevTime1))
+        if (checkTime(2000, &prevTime1))
         {
             if (redLedState == LOW)
                 redLedState = HIGH;
             else
                 redLedState = LOW;
             digitalWrite(redLedPin, redLedState);
-        }
-         if (checkTime(2000, &prevTime2))
-        {
-            if (orangeLedState == LOW)
-                orangeLedState = HIGH;
-            else
-                orangeLedState = LOW;
-            digitalWrite(orangeLedPin, orangeLedState);
+            digitalWrite(orangeLedPin, !redLedState);
         }
     }
     else
