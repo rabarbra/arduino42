@@ -47,5 +47,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Link to simulations
 
-[ex00](https://www.tinkercad.com/things/h2ogVpNzkKm)
-[ex00_bonus](https://wokwi.com/projects/371570790069649409)
+- [ex00](https://www.tinkercad.com/things/h2ogVpNzkKm)
+- [ex00_bonus](https://wokwi.com/projects/371570790069649409)
