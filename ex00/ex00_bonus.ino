@@ -70,6 +70,11 @@ void loop()
             redLedState = LOW;
             digitalWrite(redLedPin, LOW);
         }
+		if (orangeLedState == HIGH)
+        {
+            orangeLedState = LOW;
+            digitalWrite(orangeLedPin, LOW);
+        }
         if (greenLedState == LOW)
         {
             greenLedState = HIGH;
