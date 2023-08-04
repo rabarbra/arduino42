@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 
-int           	prevSensorValue = -1;
+long           	prevSensorValue = -1;
 long          	prevIncomingVal = 0;
 const int     	ledPin = 9;
 LiquidCrystal	lcd(12, 11, 5, 4, 3, 2);
