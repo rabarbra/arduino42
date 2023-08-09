@@ -3,7 +3,7 @@
 Servo		servo1;
 int			prevServoAngle = 0;
 const int	servo1Pin = 5;
-
+const int	lightMaxVal = 300; // We need to setup it in praxis
 
 void setup()
 {
@@ -22,15 +22,15 @@ int	calculateAngle(int a, int b, int c)
 	Serial.println(c);
 	if (a > c && b > c)
 	{
-		return (60 + ((b - a) * 60 / 300));
+		return (60 + ((b - a) * 60 / lightMaxVal));
 	}
 	else if (a > b && c > b)
 	{
-		return (300 + ((a - c) * 60 / 300));
+		return (300 + ((a - c) * 60 / lightMaxVal));
 	}
 	else if (c > a && b > a)
 	{
-		return (180 + ((c - b) * 60 / 300));
+		return (180 + ((c - b) * 60 / lightMaxVal));
 	}
 	else if (a > c && b == c)
 		return (0);
