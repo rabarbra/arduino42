@@ -53,3 +53,4 @@ This project is licensed under the [MIT License](LICENSE).
 - [ex02](https://www.tinkercad.com/things/0au9rPEr4JM)
 - [ex02 Light detector 3d model](https://www.tinkercad.com/things/bPLT1NCSXhd)
 - [ex02 alternative simulation](https://wokwi.com/projects/372683745317548033)
+- [ex02 bonus](https://wokwi.com/projects/373014612840080385)
