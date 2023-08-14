@@ -20,7 +20,7 @@ const int	delayBeforeLightMeasure = 40;
 void setup()
 {
 	Serial.begin(9600);
-  	pinMode(buttonPin, INPUT);
+	pinMode(buttonPin, INPUT);
 	servo1.attach(servo1Pin);
 	servo2.attach(servo2Pin);
 	servo1.write(initServo1Angle);
@@ -38,14 +38,14 @@ void	rotateHor()
 		servo1.write(currAngle);
 		delay(delayBeforeLightMeasure);
 		currLight = min(analogRead(A0), analogRead(A1));
-    	if (currLight < minLightVal)
-    	{
+		if (currLight < minLightVal)
+		{
 			minLightVal = currLight;
 			minAngle = currAngle;
 			Serial.println("MIN light: " + String(currLight) + " angle: " + String(currAngle));
-    	}
-    	// Serial.println("Curr light: " + String(currLight));
-    	currAngle += angleDelta;
+		}
+		// Serial.println("Curr light: " + String(currLight));
+		currAngle += angleDelta;
 	}
 	Serial.println("MIN FOUND with light: " + String(currLight) + " angle: " + String(minAngle));
 	servo1.write(minAngle);  
@@ -62,14 +62,14 @@ void	rotateVert()
 		servo2.write(currAngle);
 		delay(delayBeforeLightMeasure);
 		currLight = analogRead(A2);
-    	if (currLight < minLightVal)
-    	{
-    		minLightVal = currLight;
-    		minAngle = currAngle;
+		if (currLight < minLightVal)
+		{
+			minLightVal = currLight;
+			minAngle = currAngle;
 			Serial.println("MIN light: " + String(currLight) + " angle: " + String(currAngle));
-    	}
-    	// Serial.println("Curr light: " + String(currLight));
-    	currAngle += angleDelta;
+		}
+		// Serial.println("Curr light: " + String(currLight));
+		currAngle += angleDelta;
 	}
 	Serial.println("MIN FOUND with light: " + String(currLight) + " angle: " + String(minAngle));
 	servo2.write(minAngle);  
@@ -79,28 +79,28 @@ void	printLightValues()
 {
 	int light1 = analogRead(A0);
 	int light2 = analogRead(A1);
-  	int light3 = analogRead(A2);
-  	Serial.print(light1);
-  	Serial.print(" ");
-  	Serial.print(light2);
-  	Serial.print(" ");
-  	Serial.println(light3);
+	int light3 = analogRead(A2);
+	Serial.print(light1);
+	Serial.print(" ");
+	Serial.print(light2);
+	Serial.print(" ");
+	Serial.println(light3);
 }
 
 void loop()
 {
-  	int buttonState = digitalRead(buttonPin);
-  	if (buttonState == HIGH && buttonState != prevButtonState)
-  		buttonCounter += 1;
+	int buttonState = digitalRead(buttonPin);
+	if (buttonState == HIGH && buttonState != prevButtonState)
+		buttonCounter += 1;
 	printLightValues();
-  	if (buttonCounter % 2 == 1)
+	if (buttonCounter % 2 == 1)
 	{
 		rotateHor();
-    	Serial.println("Light source found");
-    	delay(100);
-    	rotateVert();
-    	buttonState++;
+		Serial.println("Light source found");
+		delay(100);
+		rotateVert();
+		buttonState++;
 	}
-  	prevButtonState = buttonState;
+	prevButtonState = buttonState;
 	delay(100);
 }
