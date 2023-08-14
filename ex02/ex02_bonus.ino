@@ -87,12 +87,23 @@ void	printLightValues()
 	Serial.println(light3);
 }
 
-void loop()
+void	printLightDirection()
+{
+	int	l1 = analogRead(A0);
+	int	l2 = analogRead(A1);
+	int	angleHor = servo1.read();
+	int	angleVert = servo2.read();
+	if (l2 < l1)
+		angleHor += 180;
+	Serial.println("Direction hor: " + String(angleHor) + "°, vert: " + String(angleVert) + "°");
+}
+
+void	loop()
 {
 	int buttonState = digitalRead(buttonPin);
 	if (buttonState == HIGH && buttonState != prevButtonState)
 		buttonCounter += 1;
-	printLightValues();
+	//printLightValues();
 	if (buttonCounter % 2 == 1)
 	{
 		rotateHor();
@@ -100,6 +111,7 @@ void loop()
 		delay(100);
 		rotateVert();
 		buttonCounter++;
+		printLightDirection();
 	}
 	prevButtonState = buttonState;
 	delay(100);
