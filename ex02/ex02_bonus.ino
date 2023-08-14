@@ -99,7 +99,7 @@ void loop()
 		Serial.println("Light source found");
 		delay(100);
 		rotateVert();
-		buttonState++;
+		buttonCounter++;
 	}
 	prevButtonState = buttonState;
 	delay(100);
