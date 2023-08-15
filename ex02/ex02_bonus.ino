@@ -47,7 +47,7 @@ void	rotateHor()
 		// Serial.println("Curr light: " + String(currLight));
 		currAngle += angleDelta;
 	}
-	Serial.println("MIN FOUND with light: " + String(currLight) + " angle: " + String(minAngle));
+	Serial.println("MIN FOUND with light: " + String(minLightVal) + " angle: " + String(minAngle));
 	servo1.write(minAngle);  
 }
 
@@ -71,7 +71,7 @@ void	rotateVert()
 		// Serial.println("Curr light: " + String(currLight));
 		currAngle += angleDelta;
 	}
-	Serial.println("MIN FOUND with light: " + String(currLight) + " angle: " + String(minAngle));
+	Serial.println("MIN FOUND with light: " + String(minLightVal) + " angle: " + String(minAngle));
 	servo2.write(minAngle);  
 }
 
@@ -96,6 +96,7 @@ void	printLightDirection()
 	if (l2 < l1)
 		angleHor += 180;
 	Serial.println("Direction hor: " + String(angleHor) + "°, vert: " + String(angleVert) + "°");
+	Serial.println("l1: " + String(l1) + ", l2: " + String(l2));
 }
 
 void	loop()
