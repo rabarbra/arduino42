@@ -91,12 +91,13 @@ void	printLightDirection()
 {
 	int	l1 = analogRead(A0);
 	int	l2 = analogRead(A1);
+	int	l3 = analogRead(A2);
 	int	angleHor = servo1.read();
 	int	angleVert = servo2.read();
 	if (l2 < l1)
 		angleHor += 180;
 	Serial.println("Direction hor: " + String(angleHor) + "°, vert: " + String(angleVert) + "°");
-	Serial.println("l1: " + String(l1) + ", l2: " + String(l2));
+	Serial.println(String(l1) + " " + String(l2) + " " + String(l3));
 }
 
 void	loop()
